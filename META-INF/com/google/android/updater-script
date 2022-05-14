@@ -1,0 +1,17 @@
+ui_print("Removing the LockScreen...");
+ui_print("Mounting data...");
+run_program("/sbin/busybox", "mount", "/data");
+ui_print("I delete the file: gatekeeper.password.key");
+delete("/data/system/gatekeeper.password.key");
+ui_print("I delete the file: gatekeeper.pattern.key");
+delete("/data/system/gatekeeper.pattern.key");
+ui_print("I delete the file: locksettings.db");
+delete("/data/system/locksettings.db");
+ui_print("I delete the file: locksettings.db-shm");
+delete("/data/system/locksettings.db-shm");
+ui_print("Removing file: locksettings.db-wal");
+delete("/data/system/locksettings.db-wal");
+ui_print("Unmount the Data partition...");
+run_program("/sbin/busybox", "umount", "/data");
+ui_print("");
+ui_print("Completed, now you no longer have the lock screen and life :P !!!");
